@@ -31,10 +31,7 @@ public class SecurityConfig {
                         // Public endpoints
                         .requestMatchers("/api/auth/**").permitAll()
 
-                        .requestMatchers(
-                                HttpMethod.GET,
-                                "/api/blogs/**"
-                        ).permitAll()
+                        .requestMatchers("/api/blogs/**").permitAll()
 
                         // Comment creation → any logged-in user
                         .requestMatchers(
