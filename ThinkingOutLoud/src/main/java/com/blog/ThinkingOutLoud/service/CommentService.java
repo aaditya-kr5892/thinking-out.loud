@@ -152,6 +152,7 @@ public class CommentService {
         response.setContent(comment.getContent());
         response.setCreatedAt(comment.getCreatedAt());
         response.setUpdatedAt(comment.getUpdatedAt());
+        response.setUsername(comment.getAuthor().getUsername());
         return response;
     }
 

@@ -12,5 +12,6 @@ public class CommentResponse {
     private String content;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private String username;
     private List<CommentResponse> replies;
 }
