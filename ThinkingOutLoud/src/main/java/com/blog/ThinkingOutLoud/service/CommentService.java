@@ -26,15 +26,15 @@ public class CommentService {
         this.blogRepository = blogRepository;
         this.userRepository = userRepository;
     }
-    Authentication authentication = SecurityContextHolder
-            .getContext()
-            .getAuthentication();
+    private boolean isAdmin() {
+        Authentication authentication = SecurityContextHolder
+                .getContext()
+                .getAuthentication();
 
-    boolean isAdmin = authentication.getAuthorities()
-            .stream()
-            .anyMatch(auth ->
-                    auth.getAuthority().equals("ROLE_ADMIN"));
-
+        return authentication.getAuthorities()
+                .stream()
+                .anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"));
+    }
     public CommentResponse editComment(Long blogId,
                                   Long commentId,
                                   UpdateCommentRequest request) {
@@ -138,7 +138,7 @@ public class CommentService {
                 .getName();
 
 
-        if (comment.getAuthor().getUsername().equals(currentUsername) || isAdmin) {
+        if (comment.getAuthor().getUsername().equals(currentUsername) || isAdmin()) {
             commentRepository.delete(comment);
         }
         else{
@@ -154,7 +154,7 @@ public class CommentService {
         response.setCreatedAt(comment.getCreatedAt());
         response.setUpdatedAt(comment.getUpdatedAt());
         response.setUsername(comment.getAuthor().getUsername());
-        response.setIsAuthor(isAdmin);
+        response.setIsAuthor(isAdmin());
         return response;
     }
 
