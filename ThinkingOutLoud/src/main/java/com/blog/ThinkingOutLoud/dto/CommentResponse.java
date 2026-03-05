@@ -13,5 +13,6 @@ public class CommentResponse {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private String username;
+    private Boolean isAuthor;
     private List<CommentResponse> replies;
 }

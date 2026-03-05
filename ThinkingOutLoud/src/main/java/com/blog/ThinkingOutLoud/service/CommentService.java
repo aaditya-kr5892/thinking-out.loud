@@ -26,6 +26,14 @@ public class CommentService {
         this.blogRepository = blogRepository;
         this.userRepository = userRepository;
     }
+    Authentication authentication = SecurityContextHolder
+            .getContext()
+            .getAuthentication();
+
+    boolean isAdmin = authentication.getAuthorities()
+            .stream()
+            .anyMatch(auth ->
+                    auth.getAuthority().equals("ROLE_ADMIN"));
 
     public CommentResponse editComment(Long blogId,
                                   Long commentId,
@@ -122,14 +130,7 @@ public class CommentService {
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Comment not found with id " + commentId));
 
-        Authentication authentication = SecurityContextHolder
-                .getContext()
-                .getAuthentication();
 
-        boolean isAdmin = authentication.getAuthorities()
-                .stream()
-                .anyMatch(auth ->
-                        auth.getAuthority().equals("ROLE_ADMIN"));
 
         String currentUsername = SecurityContextHolder
                 .getContext()
@@ -153,6 +154,7 @@ public class CommentService {
         response.setCreatedAt(comment.getCreatedAt());
         response.setUpdatedAt(comment.getUpdatedAt());
         response.setUsername(comment.getAuthor().getUsername());
+        response.setIsAuthor(isAdmin);
         return response;
     }
 
