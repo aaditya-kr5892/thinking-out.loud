@@ -154,7 +154,11 @@ public class CommentService {
         response.setCreatedAt(comment.getCreatedAt());
         response.setUpdatedAt(comment.getUpdatedAt());
         response.setUsername(comment.getAuthor().getUsername());
-        response.setIsAuthor(isAdmin());
+        boolean isBlogAuthor =
+                comment.getAuthor().getId()
+                        .equals(comment.getBlog().getAuthor().getId());
+
+        response.setIsAuthor(isBlogAuthor);
         return response;
     }
 
