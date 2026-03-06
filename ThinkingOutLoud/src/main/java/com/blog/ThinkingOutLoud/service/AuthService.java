@@ -1,5 +1,6 @@
 package com.blog.ThinkingOutLoud.service;
 
+import com.blog.ThinkingOutLoud.dto.AuthResponse;
 import com.blog.ThinkingOutLoud.dto.LoginRequest;
 import com.blog.ThinkingOutLoud.dto.RegisterRequest;
 import com.blog.ThinkingOutLoud.entity.User;
@@ -43,7 +44,7 @@ public class AuthService {
         return "User registered successfully";
     }
 
-    public String login(LoginRequest request) {
+    public AuthResponse login(LoginRequest request) {
 
         try {
 
@@ -57,7 +58,13 @@ public class AuthService {
             User user = userRepository.findByUsername(request.getUsername())
                     .orElseThrow(() -> new RuntimeException("User not found"));
 
-            return jwtService.generateToken(
+            String token = jwtService.generateToken(
+                    user.getUsername(),
+                    user.getRole()
+            );
+
+            return new AuthResponse(
+                    token,
                     user.getUsername(),
                     user.getRole()
             );

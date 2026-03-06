@@ -1,5 +1,6 @@
 package com.blog.ThinkingOutLoud.controller;
 
+import com.blog.ThinkingOutLoud.dto.AuthResponse;
 import com.blog.ThinkingOutLoud.dto.LoginRequest;
 import com.blog.ThinkingOutLoud.dto.RegisterRequest;
 import com.blog.ThinkingOutLoud.service.AuthService;
@@ -21,7 +22,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginRequest request) {
+    public AuthResponse login(@RequestBody LoginRequest request) {
         return authService.login(request);
     }
 }
