@@ -12,6 +12,7 @@ public class BlogResponse {
     private Long id;
     private String title;
     private String content;
+    private String imageUrl;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

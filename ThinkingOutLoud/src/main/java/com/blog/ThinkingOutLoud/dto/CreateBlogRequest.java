@@ -13,4 +13,7 @@ public class CreateBlogRequest {
 
     @NotBlank(message = "Content cannot be empty")
     private String content;
+
+    @NotBlank(message = "Header image cannot be empty")
+    private String imageUrl;
 }

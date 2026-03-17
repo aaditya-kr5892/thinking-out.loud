@@ -91,6 +91,7 @@ public class BlogService {
         response.setId(blog.getId());
         response.setTitle(blog.getTitle());
         response.setContent(blog.getContent());
+        response.setImageUrl(blog.getImageUrl());
         response.setCreatedAt(blog.getCreatedAt());
         response.setUpdatedAt(blog.getUpdatedAt());
         return response;

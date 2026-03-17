@@ -31,6 +31,9 @@ public class Blog {
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
+    @Column(nullable = false, name = "image_url")
+    private String imageUrl;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User author;
