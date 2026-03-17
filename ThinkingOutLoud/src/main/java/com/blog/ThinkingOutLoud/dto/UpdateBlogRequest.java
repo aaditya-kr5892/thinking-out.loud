@@ -8,4 +8,5 @@ import lombok.Setter;
 public class UpdateBlogRequest {
     String title;
     String content;
+    String imageUrl;
 }

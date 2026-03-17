@@ -31,6 +31,7 @@ public class BlogService {
         Blog blog = new Blog();
         blog.setTitle(request.getTitle());
         blog.setContent(request.getContent());
+        blog.setImageUrl(request.getImageUrl());
         blog.onCreate();
 
         String username = SecurityContextHolder
@@ -70,6 +71,9 @@ public class BlogService {
 
         if(request.getContent() != null){
             blog.setContent(request.getContent());
+        }
+        if(request.getImageUrl() != null){
+            blog.setImageUrl(request.getImageUrl());
         }
         blog.onUpdate();
 
