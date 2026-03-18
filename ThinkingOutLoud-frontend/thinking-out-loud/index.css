@@ -1,0 +1,28 @@
+ body {
+  /* font-family: "Inter", sans-serif; */
+  color: #1a1a1a;
+  background: #ede8e1;
+} 
+
+/* .blog-title {
+  font-family: "Inter", serif;
+  font-size: 2.6rem;
+}
+  */
+
+.blog-content p {
+  line-height: 1.7;
+  font-size: 1.05rem;
+  font-family: "Roboto", sans-serif;
+}
+.roboto-condensed {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+} 
+a {
+  cursor: pointer;
+}

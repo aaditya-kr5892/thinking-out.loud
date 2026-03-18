@@ -1,0 +1,317 @@
+/* ── Variables ──────────────────────────────────────── */
+:root {
+  --bg-page:        #ede4d6;
+  --bg-reply:       #efece7;
+  --border:         #e2ddd6;
+  --text-primary:   #1a1a1a;
+  --text-secondary: #666;
+  --text-muted:     #aaa;
+  --accent:         #c0856a;
+  --author-bg:      #f0e0d8;
+  --author-color:   #a05a40;
+  --font:           'Georgia', serif;
+  --font-ui:        'DM Sans', -apple-system, sans-serif;
+}
+
+/* ── Comment Section Wrapper ────────────────────────── */
+.comment-section {
+  font-family: var(--font-ui);
+  color: var(--text-primary);
+}
+
+.comment-section-title {
+  font-family: var(--font);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.comment-section-title .count {
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+/* ── Sign-in Banner ─────────────────────────────────── */
+.signin-banner {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 28px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  background: var(--bg-page);
+}
+
+/* ── Comment ────────────────────────────────────────── */
+.comment {
+  padding: 20px 0;
+  border-top: 1px solid var(--border);
+}
+
+/* ── Header row ─────────────────────────────────────── */
+.comment-header,
+.reply-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+/* ── Avatars ─────────────────────────────────────────── */
+.comment-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #d6cec5;
+  color: #6b5f54;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: var(--font-ui);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: 0.03em;
+}
+
+/* Author avatar gets accent tint */
+.comment-avatar.is-author,
+.reply-avatar.is-author {
+  background: #e8cfc4;
+  color: var(--author-color);
+}
+
+.reply-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #d6cec5;
+  color: #6b5f54;
+  font-size: 0.68rem;
+  font-weight: 700;
+  font-family: var(--font-ui);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: 0.03em;
+}
+
+/* ── Name & Time ─────────────────────────────────────── */
+.comment-username,
+.reply-username {
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+}
+
+.comment-time,
+.reply-time {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ── Author Badge ────────────────────────────────────── */
+.author-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  color: var(--author-color);
+  background: var(--author-bg);
+  border-radius: 4px;
+  padding: 2px 6px;
+  text-transform: uppercase;
+}
+
+/* ── Comment Text ────────────────────────────────────── */
+.comment-text,
+.reply-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #2a2a2a;
+  margin: 0 0 12px 0;
+}
+
+/* ── Actions Row ─────────────────────────────────────── */
+.comment-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ── Like Button ─────────────────────────────────────── */
+.like-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: var(--font-ui);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  transition: color 0.15s;
+}
+
+.like-btn:hover {
+  color: var(--accent);
+}
+
+.like-icon {
+  font-size: 0.85rem;
+}
+
+.like-count {
+  font-weight: 500;
+}
+
+/* ── Reply / Edit / Delete Buttons ──────────────────── */
+.comment-reply-btn,
+.action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.15s;
+}
+
+.comment-reply-btn:hover,
+.action-btn:hover {
+  color: var(--text-primary);
+}
+
+.action-btn.danger:hover {
+  color: #c0392b;
+}
+
+/* ── Toggle Replies Button ───────────────────────────── */
+.toggle-replies-btn {
+  margin-top: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+  padding: 0;
+  letter-spacing: 0.02em;
+  transition: opacity 0.15s;
+}
+
+.toggle-replies-btn:hover {
+  opacity: 0.75;
+}
+
+/* ── Reply Container ─────────────────────────────────── */
+.reply-container {
+  margin-top: 12px;
+  margin-left: 20px;
+  border-left: 2px solid var(--border);
+  padding-left: 20px;
+  animation: fadeIn 0.18s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-3px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Reply ───────────────────────────────────────────── */
+.reply {
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+}
+
+.reply:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.mention {
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.1);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+/* ── Comment Form ─────────────────────────────────── */
+.comment-form {
+  margin-bottom: 32px;
+}
+
+/* ── Textarea ─────────────────────────────────────── */
+.comment-text-area {
+  width: 100%;
+  min-height: 110px;
+  padding: 14px 16px;
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text-primary);
+  background: var(--bg-page);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  resize: vertical;
+  box-sizing: border-box;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  outline: none;
+}
+
+.comment-text-area::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.comment-text-area:hover {
+  border-color: #ccc7be;
+}
+
+.comment-text-area:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(192, 133, 106, 0.12);
+  background: #faf8f5;
+}
+
+/* ── Submit Button ────────────────────────────────── */
+.sub-btn {
+  margin-top: 10px;
+  padding: 9px 22px;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+.sub-btn:hover:not(:disabled) {
+  background: #b0724f;
+}
+
+.sub-btn:active:not(:disabled) {
+  background: #9e6040;
+}
+
+.sub-btn:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+}

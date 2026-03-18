@@ -1,0 +1,137 @@
+/* ── Variables (extend your existing :root) ────────── */
+:root {
+  --bg-page:        #ede8e1;
+  --bg-blog:        #faf8f5;
+  --border:         #e2ddd6;
+  --text-primary:   #1a1a1a;
+  --text-secondary: #666;
+  --text-muted:     #aaa;
+  --accent:         #c0856a;
+  --author-color:   #a05a40;
+  --font:           'Georgia', serif;
+  --font-ui:        'DM Sans', -apple-system, sans-serif;
+}
+
+/* ── Navbar Shell ─────────────────────────────────── */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px;
+  height: 58px;
+  background: var(--bg-blog);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* ── Logo ─────────────────────────────────────────── */
+.navbar-logo {
+  text-decoration: none;
+  font-family: var(--font);
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  transition: color 0.15s;
+}
+
+.navbar-logo:hover {
+  color: var(--accent);
+}
+
+/* ── Right side ───────────────────────────────────── */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ── Nav links (Login, Sign Up) ───────────────────── */
+.navbar-link {
+  text-decoration: none;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  padding: 6px 12px;
+  border-radius: 5px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.navbar-link:hover {
+  color: var(--text-primary);
+  background: var(--bg-page);
+}
+
+/* Sign Up gets a soft filled look */
+.navbar-link.signup {
+  color: var(--accent);
+  border: 1px solid var(--border);
+  background: var(--bg-page);
+}
+
+.navbar-link.signup:hover {
+  background: #f0e0d8;
+  border-color: #d4b0a0;
+  color: var(--author-color);
+}
+
+/* ── Greeting ─────────────────────────────────────── */
+.navbar-greeting {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  padding: 0 8px;
+}
+
+/* ── Admin link ───────────────────────────────────── */
+.navbar-admin-link {
+  text-decoration: none;
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--author-color);
+  background: #f0e0d8;
+  border-radius: 4px;
+  padding: 3px 8px;
+  transition: background 0.15s;
+}
+
+.navbar-admin-link:hover {
+  background: #e8cfc4;
+}
+
+/* ── Divider between greeting and logout ──────────── */
+.navbar-divider {
+  width: 1px;
+  height: 18px;
+  background: var(--border);
+  margin: 0 4px;
+}
+
+/* ── Logout Button ────────────────────────────────── */
+.navbar-logout-btn {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+}
+
+.navbar-logout-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-page);
+}

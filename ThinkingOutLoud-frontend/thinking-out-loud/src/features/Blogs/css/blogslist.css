@@ -1,0 +1,233 @@
+
+/* ── Pagination ───────────────────────────────────── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 48px 0 32px;
+}
+
+.pagination-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  background: var(--bg-blog);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+}
+
+.pagination-btn::before,
+.pagination-btn::after {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+  flex-shrink: 0;
+}
+
+/* prev arrow points left */
+.pagination-btn:first-child::before {
+  transform: rotate(-135deg) translateY(-1px);
+}
+.pagination-btn:first-child::after {
+  display: none;
+}
+
+/* next arrow points right */
+.pagination-btn:last-child::after {
+  transform: rotate(45deg) translateY(-1px);
+}
+.pagination-btn:last-child::before {
+  display: none;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  color: var(--text-primary);
+  background: var(--bg-page);
+  border-color: #ccc7be;
+}
+
+.pagination-btn:active:not(:disabled) {
+  background: #f0e0d8;
+  border-color: #d4b0a0;
+  color: var(--author-color);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* ── Page indicator (optional, see note below) ────── */
+.pagination-info {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  padding: 0 10px;
+  min-width: 60px;
+  text-align: center;
+}
+
+/* ── Blog List ────────────────────────────────────── */
+.blog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Blog Card ────────────────────────────────────── */
+.blog-card1 {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+
+.blog-card1:first-child {
+  border-top: 1px solid var(--border);
+}
+
+/* ── Blog Link ────────────────────────────────────── */
+.blog-card1-link {
+  text-decoration: none;
+  display: block;
+}
+
+.blog-card1-link:hover .blog-card-title {
+  color: var(--accent);
+}
+
+.blog-card1-link:hover .blog-card-arrow {
+  transform: translateX(4px);
+  opacity: 1;
+}
+
+/* ── Title row ────────────────────────────────────── */
+.blog-card1-title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1px;
+}
+
+/* ── Title ────────────────────────────────────────── */
+.blog-card1-title {
+  font-family: var(--font);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin: 0;
+  transition: color 0.15s;
+}
+
+/* ── Arrow ────────────────────────────────────────── */
+.blog-card1-arrow {
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-top: 1.5px solid var(--accent);
+  border-right: 1.5px solid var(--accent);
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: transform 0.15s, opacity 0.15s;
+  margin-bottom: 2px;
+}
+
+/* ── Blog Card with Image ─────────────────────────── */
+.blog-card1 {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.blog-card1:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.blog-card1-link {
+  text-decoration: none;
+  display: block;
+}
+
+.blog-card1-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* ── Left: image + title ──────────────────────────── */
+.blog-card1-title-row > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Thumbnail ────────────────────────────────────── */
+.blog-card1-title-row img {
+  width: 88px;
+  height: 66px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+  background: var(--bg-page);
+}
+
+/* ── Title ────────────────────────────────────────── */
+.blog-card1-title {
+  font-family: var(--font);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.45;
+  margin: 0;
+  transition: color 0.15s;
+
+  /* clamp to 2 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.blog-card1-link:hover .blog-card1-title {
+  color: var(--accent);
+}
+
+/* ── Arrow ────────────────────────────────────────── */
+.blog-card1-arrow {
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-top: 1.5px solid var(--accent);
+  border-right: 1.5px solid var(--accent);
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: transform 0.15s, opacity 0.15s;
+}
+
+.blog-card1-link:hover .blog-card1-arrow {
+  transform: rotate(45deg) translateX(3px);
+  opacity: 1;
+}
+
+/* ── Fallback when image is missing ──────────────── */
+.blog-card1-title-row img[src=""],
+.blog-card1-title-row img:not([src]) {
+  background: var(--bg-page);
+  border: 1px dashed var(--border);
+}

@@ -1,0 +1,30 @@
+{
+  "name": "thinking-out-loud",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.90.21",
+    "@tiptap/extension-highlight": "^3.20.1",
+    "@tiptap/extension-image": "^3.20.2",
+    "@tiptap/extension-link": "^3.20.1",
+    "@tiptap/extension-text-align": "^3.20.1",
+    "@tiptap/extension-underline": "^3.20.1",
+    "@tiptap/pm": "^3.20.1",
+    "@tiptap/react": "^3.20.1",
+    "@tiptap/starter-kit": "^3.20.1",
+    "axios": "^1.13.6",
+    "dompurify": "^3.3.1",
+    "jwt-decode": "^4.0.0",
+    "react-router-dom": "^7.13.1",
+    "zustand": "^5.0.11"
+  }
+}
