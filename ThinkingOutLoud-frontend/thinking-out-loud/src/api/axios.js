@@ -1,7 +1,6 @@
 import axios from "axios";
 import { isTokenExpired } from "../utils/auth";
 import { navigateTo } from "../utils/navigation";
-import { NativeBuffer } from "mongoose";
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL
