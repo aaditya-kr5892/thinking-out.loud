@@ -16,6 +16,9 @@
 *   **Secure Authentication & Identity**: Custom user registration and login backed by stateless **JWT (JSON Web Tokens)** and password hashing using **BCrypt**.
 *   **Rich Text Editor (TipTap)**: Admin users can compose articles using a fully customized TipTap editor integration supporting alignments, text highlights, underlines, embedded links, custom layout, and image attachments.
 *   **Nested Commenting System**: Support for interactive comment sections under each post. Features include single-level nested replies (preventing deeply nested spaghetti threads), edit/delete permissions, and "Blog Author" badges to easily identify the post creator in the comments.
+*   **Persistent Dark Mode**: A premium, eyes-friendly, low-contrast **Material Dark theme** (`#121212` base) with a persistent theme toggle.
+*   **Responsive Ellipsis Navbar**: Nav elements collapse into a vertical 3-dot ellipsis menu on mobile screens, expanding into a floating modal for actions.
+*   **Custom Confirmation Dialogs**: A reusable, animated `ConfirmationModal` component rendered via **React Portals** to bypass layout conflicts, replacing raw browser `window.confirm` popups.
 *   **Paginated Feeds**: Seamless page-by-page rendering of latest posts, reducing bandwidth and improving load times.
 *   **Role-Based Access Control**: Standard users (`ROLE_USER`) can read blogs and comment, while only authorized creators (`ROLE_ADMIN`) can access administrative editors to write, update, or delete blog posts.
 *   **Docker Containerization**: Production-ready, multi-stage Docker build separating the compilation phase from the execution environment to produce clean, compact runner images.
@@ -28,6 +31,9 @@
 Writers compose articles on the frontend using a customized **TipTap editor**. Instead of using markdown or plain text, TipTap compiles the formatting blocks into standard, structured **HTML**. 
 * **Database Representation**: The generated HTML is sent via the API and stored in a PostgreSQL `TEXT` column (`content` in the `blog` table), preserving paragraph layouts, text alignments, hyperlinks, and underlines directly.
 * **XSS Sanitization**: To protect readers from malicious injections, the frontend routes the retrieved HTML through **DOMPurify** before inserting it into the DOM. This ensures all scripting elements, inline styles, or unsafe handlers are scrubbed clean while retaining the rich styling.
+* **Developer Code-Block Keymaps**: Includes custom key mappings in the code-block extension to capture typing keydowns:
+  * *Tab Key*: Intercepts standard focus-shifts and inserts two indentation spaces (`  `) at the cursor.
+  * *Enter Key*: Reads the leading spacing/tabs of the current line and automatically duplicates them on the newline, enabling automatic developer indents.
 
 ### 🖼️ Post Cover Images
 Every blog post features a dedicated `imageUrl` string attribute.
@@ -39,6 +45,7 @@ To foster discussion, each post includes a responsive comment thread structure w
 * **Self-Referential Mapping**: The database `comments` table uses a self-referential parent column (`parent_id`) allowing comment records to link directly to another comment as a reply.
 * **Single-Level Constraint**: To prevent nested UI clutter and endless horizontal margins, the system enforces a strict 1-level reply constraint. The backend business logic in [CommentService.java](file:///D:/ThinkingOutLoud-blog/ThinkingOutLoud/src/main/java/com/blog/ThinkingOutLoud/service/CommentService.java#L101-L103) checks if the target comment is already a child reply; if `parent.getParent() != null`, it rejects the request with an `IllegalArgumentException`.
 * **Author Identity Badge**: If a user commenting on a blog post is the creator of the post itself, the system marks the comment response object with `isAuthor = true` and flags their username with a highlighted badge.
+* **Cascading Delete Propagation**: Engineered clean Hibernate bidirectional entity cascade mappings (`cascade = CascadeType.ALL, orphanRemoval = true`). Deleting an article automatically wipes out its comments, and deleting a comment automatically deletes all of its nested replies.
 
 ---
 
