@@ -12,6 +12,7 @@
     "vite": "^7.3.1"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.3.2",
     "@tanstack/react-query": "^5.90.21",
     "@tiptap/extension-highlight": "^3.20.1",
     "@tiptap/extension-image": "^3.20.2",
@@ -21,10 +22,14 @@
     "@tiptap/pm": "^3.20.1",
     "@tiptap/react": "^3.20.1",
     "@tiptap/starter-kit": "^3.20.1",
+    "@vitejs/plugin-react": "^5.0.0",
     "axios": "^1.13.6",
     "dompurify": "^3.3.1",
     "jwt-decode": "^4.0.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "react-router-dom": "^7.13.1",
+    "tailwindcss": "^4.3.2",
     "zustand": "^5.0.11"
   }
 }

@@ -5,8 +5,6 @@ import { getBlogById } from "../../api/blogApi";
 import DOMPurify from "dompurify";
 import CommentSection from "../comments/CommentSection";
 import { useAuthStore } from "../auth/authStore";
-import './css/blog.css';
-import "../admin/css/tiptap.css";
 
 function BlogDetails() {
   const { id } = useParams();
@@ -18,32 +16,43 @@ function BlogDetails() {
     queryFn: () => getBlogById(id),
   });
 
-  if (isLoading) return <div className="blog-state">Loading post…</div>;
-  if (error)     return <div className="blog-state">Could not load post.</div>;
+  if (isLoading) return (
+    <div className="min-h-screen flex items-center justify-center bg-[#faf9f6] dark:bg-[#0d0d0c]">
+      <div className="text-zinc-500 dark:text-zinc-400 font-medium animate-pulse text-lg">Loading post…</div>
+    </div>
+  );
+
+  if (error) return (
+    <div className="min-h-screen flex items-center justify-center bg-[#faf9f6] dark:bg-[#0d0d0c]">
+      <div className="text-red-500 dark:text-red-400 font-medium text-lg">Could not load post.</div>
+    </div>
+  );
 
   const sanitizedContent = DOMPurify.sanitize(data.content);
 
   return (
-    <div className="blog-page">
-
-      {/* ── Hero image ── */}
+    <div className="min-h-screen bg-[#faf9f6] dark:bg-[#0d0d0c] pb-24 animate-fade-in transition-colors duration-300">
+      
       {data.imageUrl && (
-        <img
-          className="blog-hero"
-          src={data.imageUrl}
-          alt={data.title}
-        />
+        <div className="w-full max-h-[500px] overflow-hidden border-b border-neutral-200 dark:border-neutral-800">
+          <img
+            className="w-full h-full object-cover max-h-[500px]"
+            src={data.imageUrl}
+            alt={data.title}
+          />
+        </div>
       )}
 
-      <article className="blog-container">
+      <article className="max-w-3xl mx-auto px-6 mt-12 md:mt-16">
+        
+        <header className="border-b border-neutral-200 dark:border-neutral-800 pb-8 mb-12 space-y-4">
+          <span className="text-sm font-semibold tracking-wider uppercase text-neutral-400 dark:text-neutral-500">ThinkingOutLoud</span>
+          <h1 className="text-3xl md:text-5xl font-extrabold text-neutral-900 dark:text-white leading-tight tracking-tight">
+            {data.title}
+          </h1>
 
-        {/* ── Header ── */}
-        <header className="blog-header">
-          <span className="blog-eyebrow">ThinkingOutLoud </span>
-          <h1 className="blog-title">{data.title}</h1>
-
-          <div className="blog-meta-row">
-            <time className="blog-date">
+          <div className="flex items-center justify-between pt-4">
+            <time className="text-sm font-medium text-neutral-500 dark:text-neutral-400">
               {new Date(data.createdAt).toLocaleString("en-US", {
                 month: "long",
                 day: "numeric",
@@ -55,7 +64,7 @@ function BlogDetails() {
 
             {role === "ROLE_ADMIN" && (
               <button
-                className="blog-edit-btn"
+                className="text-xs font-semibold uppercase tracking-wider bg-neutral-950 hover:bg-neutral-850 dark:bg-white dark:hover:bg-neutral-100 text-white dark:text-neutral-950 px-4 py-2 rounded-full shadow-sm transition-colors cursor-pointer"
                 onClick={() => navigate(`/admin/editor/${id}`)}
               >
                 Edit Post
@@ -64,14 +73,12 @@ function BlogDetails() {
           </div>
         </header>
 
-        {/* ── Body ── */}
         <div
-          className="tiptap"
+          className="blog-content"
           dangerouslySetInnerHTML={{ __html: sanitizedContent }}
         />
 
-        {/* ── Comments ── */}
-        <div className="blog-comments-divider" />
+        <div className="w-full h-[1px] bg-neutral-200 dark:bg-neutral-800 my-16" />
         <CommentSection blogId={id} />
 
       </article>
@@ -80,3 +87,4 @@ function BlogDetails() {
 }
 
 export default BlogDetails;
+
