@@ -7,6 +7,8 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-latest-blue.svg?style=flat-square&logo=postgresql)](https://www.postgresql.org/)
 [![Docker](https://img.shields.io/badge/Docker-Supported-blue?style=flat-square&logo=docker)](https://www.docker.com/)
 
+🔗 **Live Demo**: [thinkingoutloud.xyz](https://www.thinkingoutloud.xyz)
+
 **Thinking Out Loud** is a modern, high-performance, and feature-rich full-stack blogging platform. Designed for writers who value thoughtful, long-form content, the platform pairs a robust Spring Boot REST backend with a responsive, modern React frontend. It offers rich-text writing tools, nested commenting threads, secure role-based navigation, and paginated reading experiences.
 
 ---
