@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useAuthStore } from "../auth/authStore";
 
 function highlightMentions(text) {
   const mentionRegex = /(@\w+)/g;
@@ -16,8 +17,9 @@ function highlightMentions(text) {
   });
 }
 
-function CommentItem({ comment, onReply }) {
+function CommentItem({ comment, onReply, onDelete }) {
   const [showReplies, setShowReplies] = useState(false);
+  const { user, role } = useAuthStore();
   const replyCount = comment.replies?.length || 0;
 
   const getInitials = (name) =>
@@ -65,6 +67,15 @@ function CommentItem({ comment, onReply }) {
             {showReplies ? "Hide replies" : `Show ${replyCount} ${replyCount === 1 ? "reply" : "replies"}`}
           </button>
         )}
+
+        {(role === "ROLE_ADMIN" || (user && user === comment.username)) && (
+          <button
+            className="text-xs font-semibold text-red-500 hover:text-red-750 transition-colors cursor-pointer animate-fade-in"
+            onClick={() => onDelete(comment.id)}
+          >
+            Delete
+          </button>
+        )}
       </div>
 
       {showReplies && (
@@ -95,13 +106,21 @@ function CommentItem({ comment, onReply }) {
 
               <p className="text-sm text-neutral-700 dark:text-neutral-200 leading-relaxed font-light pl-11">{highlightMentions(reply.content)}</p>
 
-              <div className="pl-11">
+              <div className="pl-11 flex items-center gap-4">
                 <button 
                   className="text-xs font-semibold text-neutral-500 hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-white transition-colors cursor-pointer" 
                   onClick={() => onReply({ ...reply, parentId: comment.id })}
                 >
                   Reply
                 </button>
+                {(role === "ROLE_ADMIN" || (user && user === reply.username)) && (
+                  <button
+                    className="text-xs font-semibold text-red-500 hover:text-red-750 transition-colors cursor-pointer animate-fade-in"
+                    onClick={() => onDelete(reply.id)}
+                  >
+                    Delete
+                  </button>
+                )}
               </div>
 
             </div>

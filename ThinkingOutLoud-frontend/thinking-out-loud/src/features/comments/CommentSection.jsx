@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { getCommentsByBlog, createComment } from "../../api/commentApi";
+import { getCommentsByBlog, createComment, deleteComment } from "../../api/commentApi";
 import CommentItem from "./CommentItem";
+import ConfirmationModal from "../../components/ConfirmationModal";
 
 function CommentSection({ blogId }) {
     const { data, isLoading, error } = useQuery({
@@ -25,6 +26,27 @@ function CommentSection({ blogId }) {
             setReplyTarget(null);
         }
     });
+
+    const [modalOpen, setModalOpen] = useState(false);
+    const [selectedCommentId, setSelectedCommentId] = useState(null);
+
+    const deleteCommentMutation = useMutation({
+        mutationFn: (commentId) => deleteComment(blogId, commentId),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ["comments", blogId] });
+        }
+    });
+
+    const handleDeleteComment = (commentId) => {
+        setSelectedCommentId(commentId);
+        setModalOpen(true);
+    };
+
+    const confirmDelete = () => {
+        if (selectedCommentId) {
+            deleteCommentMutation.mutate(selectedCommentId);
+        }
+    };
 
     const handleReply = (item) => {
         const parentId = item.parentId ? item.parentId : item.id;
@@ -90,9 +112,18 @@ function CommentSection({ blogId }) {
                         key={comment.id}
                         comment={comment}
                         onReply={handleReply}
+                        onDelete={handleDeleteComment}
                     />
                 ))}
             </div>
+
+            <ConfirmationModal
+                isOpen={modalOpen}
+                onClose={() => { setModalOpen(false); setSelectedCommentId(null); }}
+                onConfirm={confirmDelete}
+                title="Delete Comment"
+                message="Are you sure you want to delete this item? This action cannot be undone."
+            />
         </div>
     );
 }

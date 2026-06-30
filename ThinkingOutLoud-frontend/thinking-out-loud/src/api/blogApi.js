@@ -9,3 +9,8 @@ export const getBlogById = async (id) => {
   const response = await api.get(`/blogs/${id}`);
   return response.data;
 };
+
+export const deleteBlog = async (id) => {
+  const response = await api.delete(`/blogs/${id}`);
+  return response.data;
+};

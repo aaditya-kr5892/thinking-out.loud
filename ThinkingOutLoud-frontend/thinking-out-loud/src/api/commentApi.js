@@ -13,3 +13,8 @@ export const createComment = async (blogId, content, parentId = null) => {
   return response.data;
 };
 
+export const deleteComment = async (blogId, commentId) => {
+  const response = await api.delete(`/blogs/${blogId}/comments/${commentId}`);
+  return response.data;
+};
+

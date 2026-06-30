@@ -1,15 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import { getBlogById } from "../../api/blogApi";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { getBlogById, deleteBlog } from "../../api/blogApi";
 import DOMPurify from "dompurify";
 import CommentSection from "../comments/CommentSection";
 import { useAuthStore } from "../auth/authStore";
+import ConfirmationModal from "../../components/ConfirmationModal";
 
 function BlogDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const role = useAuthStore((state) => state.role);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const deleteMutation = useMutation({
+    mutationFn: deleteBlog,
+    onSuccess: () => {
+      navigate("/");
+    }
+  });
+
+  const handleDelete = () => {
+    setModalOpen(true);
+  };
+
+  const confirmDelete = () => {
+    deleteMutation.mutate(id);
+  };
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["blog", id],
@@ -63,12 +80,20 @@ function BlogDetails() {
             </time>
 
             {role === "ROLE_ADMIN" && (
-              <button
-                className="text-xs font-semibold uppercase tracking-wider bg-neutral-950 hover:bg-neutral-850 dark:bg-white dark:hover:bg-neutral-100 text-white dark:text-neutral-950 px-4 py-2 rounded-full shadow-sm transition-colors cursor-pointer"
-                onClick={() => navigate(`/admin/editor/${id}`)}
-              >
-                Edit Post
-              </button>
+              <div className="flex items-center gap-3">
+                <button
+                  className="text-xs font-semibold uppercase tracking-wider bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-neutral-800 dark:text-neutral-200 px-4 py-2 rounded-full border border-neutral-200 dark:border-neutral-700 shadow-sm transition-colors cursor-pointer"
+                  onClick={() => navigate(`/admin/editor/${id}`)}
+                >
+                  Edit Post
+                </button>
+                <button
+                  className="text-xs font-semibold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full shadow-sm transition-colors cursor-pointer"
+                  onClick={handleDelete}
+                >
+                  Delete Post
+                </button>
+              </div>
             )}
           </div>
         </header>
@@ -80,6 +105,14 @@ function BlogDetails() {
 
         <div className="w-full h-[1px] bg-neutral-200 dark:bg-neutral-800 my-16" />
         <CommentSection blogId={id} />
+
+        <ConfirmationModal
+          isOpen={modalOpen}
+          onClose={() => setModalOpen(false)}
+          onConfirm={confirmDelete}
+          title="Delete Post"
+          message="Are you sure you want to delete this post? This will permanently remove the article and all associated comments."
+        />
 
       </article>
     </div>
