@@ -164,7 +164,7 @@ function AdminEditor() {
     };
 
     return (
-        <div className="min-h-screen bg-[#faf9f6] dark:bg-[#0d0d0c] px-6 py-12 animate-fade-in transition-colors duration-300">
+        <div className="min-h-screen bg-[#faf9f6] dark:bg-[#121212] px-6 py-12 animate-fade-in transition-colors duration-300">
             <div className="max-w-5xl mx-auto space-y-8">
 
                 <div className="flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800 pb-5">
@@ -179,7 +179,7 @@ function AdminEditor() {
                     {isEdit && (
                         <button
                             type="button"
-                            className="text-xs font-semibold uppercase tracking-wider bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 px-4 py-2 rounded-full shadow-sm transition-colors cursor-pointer"
+                            className="text-xs font-semibold uppercase tracking-wider bg-white dark:bg-[#1c1c1c] border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-[#2a2a2a] text-neutral-700 dark:text-neutral-300 px-4 py-2 rounded-full shadow-sm transition-colors cursor-pointer"
                             onClick={() => navigate(`/blogs/${id}`)}
                         >
                             ← Back to Post
@@ -193,7 +193,7 @@ function AdminEditor() {
                         <div className="lg:col-span-2 space-y-6">
                             <input
                                 type="text"
-                                className="w-full bg-white dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 rounded-2xl px-6 py-4 text-xl md:text-2xl font-bold text-neutral-900 dark:text-white focus:outline-none focus:border-neutral-900 dark:focus:border-neutral-50 transition-colors shadow-sm placeholder-neutral-300 dark:placeholder-neutral-600"
+                                className="w-full bg-white dark:bg-[#1c1c1c] border border-neutral-200/80 dark:border-neutral-800 rounded-2xl px-6 py-4 text-xl md:text-2xl font-bold text-neutral-900 dark:text-white focus:outline-none focus:border-neutral-900 dark:focus:border-neutral-50 transition-colors shadow-sm placeholder-neutral-300 dark:placeholder-neutral-600"
                                 placeholder="Post title..."
                                 value={title}
                                 onChange={(e) => {
@@ -204,7 +204,7 @@ function AdminEditor() {
                                 required
                             />
 
-                            <div className="bg-white dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 rounded-2xl overflow-hidden shadow-sm flex flex-col">
+                            <div className="bg-white dark:bg-[#1c1c1c] border border-neutral-200/80 dark:border-neutral-800 rounded-2xl overflow-hidden shadow-sm flex flex-col">
                                 <Tiptap editor={editor} />
                                 <div className="p-6 min-h-[300px]">
                                     <EditorContent editor={editor} className="outline-none min-h-[280px]" />
@@ -214,13 +214,13 @@ function AdminEditor() {
 
                         <aside className="space-y-6">
                             
-                            <div className="bg-white dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 rounded-2xl p-6 shadow-sm space-y-4">
-                                <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 block border-b border-neutral-100 dark:border-neutral-850 pb-2">
+                             <div className="bg-white dark:bg-[#1c1c1c] border border-neutral-200/80 dark:border-neutral-800 rounded-2xl p-6 shadow-sm space-y-4">
+                                <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 block border-b border-neutral-100 dark:border-neutral-800 pb-2">
                                     Cover Image
                                 </span>
                                 
                                 {imageUrl && (
-                                    <div className="aspect-[16/10] rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-850">
+                                     <div className="aspect-[16/10] rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-[#121212]">
                                         <img src={imageUrl} alt="Cover preview" className="w-full h-full object-cover" />
                                     </div>
                                 )}
@@ -239,7 +239,7 @@ function AdminEditor() {
                                         onChange={handleImageUpload}
                                     />
                                     <button
-                                        className="w-full mt-2 text-xs font-semibold bg-neutral-100 hover:bg-neutral-200 text-neutral-800 border-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-750 dark:text-neutral-200 dark:border-neutral-700 py-3 px-4 rounded-xl transition-colors cursor-pointer"
+                                         className="w-full mt-2 text-xs font-semibold bg-neutral-100 hover:bg-neutral-200 text-neutral-800 border-neutral-200 dark:bg-[#2a2a2a] dark:hover:bg-[#353535] dark:text-neutral-200 dark:border-neutral-700 py-3 px-4 rounded-xl transition-colors cursor-pointer"
                                         type="button"
                                         onClick={() => fileInputRef.current.click()}
                                     >
@@ -248,7 +248,7 @@ function AdminEditor() {
                                 </div>
                             </div>
 
-                            <div className="bg-white dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 rounded-2xl p-6 shadow-sm space-y-4">
+                            <div className="bg-white dark:bg-[#1c1c1c] border border-neutral-200/80 dark:border-neutral-800 rounded-2xl p-6 shadow-sm space-y-4">
                                 <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 block border-b border-neutral-100 dark:border-neutral-850 pb-2">
                                     {isEdit ? "Update Changes" : "Post Control"}
                                 </span>

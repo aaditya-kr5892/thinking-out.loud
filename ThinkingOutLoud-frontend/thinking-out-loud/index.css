@@ -19,8 +19,8 @@ body {
 
 
 .dark body {
-  background-color: #0d0d0c;
-  color: #f4f4f3;
+  background-color: #121212;
+  color: #a9a9a9;
 }
 
 /* TipTap Editor typing workspace contrast overrides */
@@ -30,7 +30,7 @@ body {
 }
 
 .dark .tiptap {
-  color: #f4f4f3;
+  color: #a9a9a9;
 }
 
 /* Placeholder styling inside the TipTap editor */
@@ -62,7 +62,7 @@ body {
 }
 .dark .blog-content p,
 .dark .tiptap p {
-  color: #d4d4d2;
+  color: #a9a9a9;
 }
 
 /* Clear distinctions for H1, H2, and H3 sizes */
@@ -103,7 +103,7 @@ body {
 
 .dark .blog-content h1, .dark .blog-content h2, .dark .blog-content h3,
 .dark .tiptap h1, .dark .tiptap h2, .dark .tiptap h3 {
-  color: #fafafa;
+  color: #e3e3e3;
 }
 
 /* Show lists in the editor & posted view */
@@ -131,7 +131,7 @@ body {
 }
 .dark .blog-content blockquote,
 .dark .tiptap blockquote {
-  border-left-color: #fafafa;
+  border-left-color: #e3e3e3;
 }
 
 .blog-content blockquote p,
@@ -144,7 +144,7 @@ body {
 }
 .dark .blog-content blockquote p,
 .dark .tiptap blockquote p {
-  color: #a3a3a3;
+  color: #8c8c8c;
 }
 
 
@@ -178,9 +178,9 @@ body {
 }
 .dark .blog-content pre,
 .dark .tiptap pre {
-  background-color: #18181b;
-  color: #f4f4f5;
-  border: 1px solid #27272a;
+  background-color: #1c1c1c;
+  color: #a9a9a9;
+  border: 1px solid #2a2a2a;
 }
 
 /* Custom fade-in micro-animation for page routing transitions */

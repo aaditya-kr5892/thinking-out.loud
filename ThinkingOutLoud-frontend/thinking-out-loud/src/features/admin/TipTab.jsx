@@ -40,12 +40,12 @@ const Tiptap = ({ editor }) => {
     ${disabled ? 'opacity-40 cursor-not-allowed' : ''}
     ${isActive
       ? 'bg-neutral-900 border-neutral-900 text-white dark:bg-white dark:border-white dark:text-neutral-950 shadow-sm'
-      : 'bg-white border-neutral-200 text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900 dark:bg-neutral-950 dark:border-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-white'
+      : 'bg-white border-neutral-200 text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900 dark:bg-[#121212] dark:border-neutral-800 dark:text-neutral-300 dark:hover:bg-[#2a2a2a] dark:hover:text-white'
     }
   `.trim();
 
   return (
-    <div className="border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50 p-3 flex flex-wrap gap-1.5 items-center transition-colors">
+    <div className="border-b border-neutral-200/80 dark:border-neutral-800 bg-neutral-50/50 dark:bg-[#1c1c1c]/50 p-3 flex flex-wrap gap-1.5 items-center transition-colors">
 
       <button
         type="button"

@@ -73,7 +73,7 @@ function CommentItem({ comment, onReply }) {
             <div key={reply.id} className="space-y-3 pt-2">
 
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-neutral-200 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 flex items-center justify-center text-[10px] font-bold shadow-sm">
+                <div className="w-8 h-8 rounded-full bg-neutral-200 text-neutral-700 dark:bg-[#1c1c1c] dark:text-neutral-300 flex items-center justify-center text-[10px] font-bold shadow-sm">
                   {getInitials(reply.username)}
                 </div>
                 <div className="flex flex-col">

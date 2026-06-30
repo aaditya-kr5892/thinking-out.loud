@@ -17,13 +17,13 @@ function BlogDetails() {
   });
 
   if (isLoading) return (
-    <div className="min-h-screen flex items-center justify-center bg-[#faf9f6] dark:bg-[#0d0d0c]">
+    <div className="min-h-screen flex items-center justify-center bg-[#faf9f6] dark:bg-[#121212]">
       <div className="text-zinc-500 dark:text-zinc-400 font-medium animate-pulse text-lg">Loading post…</div>
     </div>
   );
 
   if (error) return (
-    <div className="min-h-screen flex items-center justify-center bg-[#faf9f6] dark:bg-[#0d0d0c]">
+    <div className="min-h-screen flex items-center justify-center bg-[#faf9f6] dark:bg-[#121212]">
       <div className="text-red-500 dark:text-red-400 font-medium text-lg">Could not load post.</div>
     </div>
   );
@@ -31,7 +31,7 @@ function BlogDetails() {
   const sanitizedContent = DOMPurify.sanitize(data.content);
 
   return (
-    <div className="min-h-screen bg-[#faf9f6] dark:bg-[#0d0d0c] pb-24 animate-fade-in transition-colors duration-300">
+    <div className="min-h-screen bg-[#faf9f6] dark:bg-[#121212] pb-24 animate-fade-in transition-colors duration-300">
       
       {data.imageUrl && (
         <div className="w-full max-h-[500px] overflow-hidden border-b border-neutral-200 dark:border-neutral-800">

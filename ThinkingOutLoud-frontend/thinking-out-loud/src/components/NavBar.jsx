@@ -23,7 +23,7 @@ function Navbar() {
   }, [darkMode]);
 
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-[#0d0d0c]/80 border-b border-neutral-200/80 dark:border-neutral-800/80 px-6 py-4 flex items-center justify-between transition-colors">
+    <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-[#121212]/80 border-b border-neutral-200/80 dark:border-neutral-800/80 px-6 py-4 flex items-center justify-between transition-colors">
       <Link to="/" className="text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors">
         Thinking<span className="font-light italic text-neutral-500 dark:text-neutral-400">OutLoud</span>
       </Link>
@@ -32,7 +32,7 @@ function Navbar() {
         <button
           type="button"
           onClick={() => setDarkMode(!darkMode)}
-          className="p-2 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-850 hover:text-neutral-900 dark:hover:text-white transition-all shadow-sm cursor-pointer"
+          className="p-2 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#1c1c1c] text-neutral-600 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-850 hover:text-neutral-900 dark:hover:text-white transition-all shadow-sm cursor-pointer"
           title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
         >
           {darkMode ? (
@@ -65,7 +65,7 @@ function Navbar() {
               </span>
 
               {role === "ROLE_ADMIN" && (
-                <Link to="/admin/editor" className="text-sm font-medium bg-neutral-100 hover:bg-neutral-200 text-neutral-800 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 px-3.5 py-1.5 rounded-full transition-colors border border-neutral-200 dark:border-neutral-800">
+                <Link to="/admin/editor" className="text-sm font-medium bg-neutral-100 hover:bg-neutral-200 text-neutral-800 dark:bg-[#1c1c1c] dark:hover:bg-neutral-800 dark:text-neutral-200 px-3.5 py-1.5 rounded-full transition-colors border border-neutral-200 dark:border-neutral-800">
                   Admin Panel
                 </Link>
               )}
@@ -86,7 +86,7 @@ function Navbar() {
           <button
             type="button"
             onClick={() => setMenuOpen(!menuOpen)}
-            className="p-2 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-all shadow-sm cursor-pointer"
+            className="p-2 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#1c1c1c] text-neutral-600 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-all shadow-sm cursor-pointer"
             title="Toggle Menu"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4.5 h-4.5">
@@ -96,7 +96,7 @@ function Navbar() {
         </div>
 
         {menuOpen && (
-          <div className="absolute top-[72px] right-6 w-52 bg-white/95 dark:bg-neutral-950/95 backdrop-blur-md border border-neutral-200/80 dark:border-neutral-800 rounded-2xl shadow-lg p-4 flex flex-col gap-3.5 z-50 animate-fade-in md:hidden transition-colors duration-300">
+          <div className="absolute top-[72px] right-6 w-52 bg-white/95 dark:bg-[#121212]/95 backdrop-blur-md border border-neutral-200/80 dark:border-neutral-800 rounded-2xl shadow-lg p-4 flex flex-col gap-3.5 z-50 animate-fade-in md:hidden transition-colors duration-300">
             {user ? (
               <>
                 <div className="text-[10px] font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-widest pb-1 border-b border-neutral-100 dark:border-neutral-850">

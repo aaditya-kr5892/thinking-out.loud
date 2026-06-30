@@ -39,7 +39,7 @@ function CommentSection({ blogId }) {
         <div className="space-y-8">
             <div className="flex items-center gap-2 border-b border-neutral-200 dark:border-neutral-800 pb-3">
                 <h3 className="text-lg font-bold text-neutral-900 dark:text-white tracking-tight">Discussion</h3>
-                <span className="text-xs font-semibold px-2 py-0.5 bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400 rounded-full">
+                <span className="text-xs font-semibold px-2 py-0.5 bg-neutral-100 dark:bg-[#1c1c1c] border border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400 rounded-full">
                     {data ? data.reduce((acc, c) => acc + 1 + (c.replies?.length || 0), 0) : 0}
                 </span>
             </div>
@@ -56,7 +56,7 @@ function CommentSection({ blogId }) {
                 }}
             >
                 <textarea
-                    className="w-full min-h-[100px] p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 text-sm focus:outline-none focus:border-neutral-900 dark:focus:border-neutral-50 transition-colors bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 font-light"
+                    className="w-full min-h-[100px] p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 text-sm focus:outline-none focus:border-neutral-900 dark:focus:border-neutral-50 transition-colors bg-white dark:bg-[#1c1c1c] text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 font-light"
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                     placeholder={token ? "Share your thoughts on this article..." : "Please login to join the discussion."}

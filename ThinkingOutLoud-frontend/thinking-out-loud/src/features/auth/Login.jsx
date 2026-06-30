@@ -24,8 +24,8 @@ function Login() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-76px)] bg-[#faf9f6] dark:bg-[#0d0d0c] flex items-center justify-center px-6 py-12 animate-fade-in transition-colors duration-300">
-      <div className="bg-white dark:bg-neutral-950 border border-neutral-200/80 dark:border-neutral-800 rounded-3xl overflow-hidden shadow-sm max-w-4xl w-full grid grid-cols-1 md:grid-cols-2">
+    <div className="min-h-[calc(100vh-76px)] bg-[#faf9f6] dark:bg-[#121212] flex items-center justify-center px-6 py-12 animate-fade-in transition-colors duration-300">
+      <div className="bg-white dark:bg-[#1c1c1c] border border-neutral-200/80 dark:border-neutral-800 rounded-3xl overflow-hidden shadow-sm max-w-4xl w-full grid grid-cols-1 md:grid-cols-2">
 
         <div className="bg-neutral-900 text-white p-8 md:p-12 flex flex-col justify-between space-y-12">
           <div className="space-y-6">
@@ -65,7 +65,7 @@ function Login() {
             <div className="space-y-2">
               <label className="text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Username</label>
               <input
-                className="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-800 text-sm focus:outline-none focus:border-neutral-900 dark:focus:border-neutral-50 transition-colors bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 font-light"
+                className="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-800 text-sm focus:outline-none focus:border-neutral-900 dark:focus:border-neutral-50 transition-colors bg-neutral-50 dark:bg-[#121212] text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 font-light"
                 type="text"
                 placeholder="your_username"
                 value={username}
@@ -77,7 +77,7 @@ function Login() {
             <div className="space-y-2">
               <label className="text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">Password</label>
               <input
-                className="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-800 text-sm focus:outline-none focus:border-neutral-900 dark:focus:border-neutral-50 transition-colors bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 font-light"
+                className="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-800 text-sm focus:outline-none focus:border-neutral-900 dark:focus:border-neutral-50 transition-colors bg-neutral-50 dark:bg-[#121212] text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 font-light"
                 type="password"
                 placeholder="••••••••"
                 value={password}
