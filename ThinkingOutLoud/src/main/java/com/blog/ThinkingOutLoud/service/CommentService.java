@@ -92,12 +92,10 @@ public class CommentService {
                     .orElseThrow(() ->
                             new ResourceNotFoundException("Parent comment not found"));
 
-            // ensure same blog
             if (!parent.getBlog().getId().equals(blogId)) {
                 throw new ResourceNotFoundException("Invalid parent comment");
             }
 
-            // enforce single-level rule
             if (parent.getParent() != null) {
                 throw new IllegalArgumentException("Replies cannot have replies");
             }

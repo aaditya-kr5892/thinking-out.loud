@@ -33,7 +33,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
 
-                        .requestMatchers("/api/blogs/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/blogs/**").permitAll()
 
                         // Comment creation → any logged-in user
                         .requestMatchers(
@@ -46,10 +46,18 @@ public class SecurityConfig {
                                 "/api/blogs/*/comments"
                         ).permitAll()
 
-                        // Blog creation → ADMIN only
+                        // Blog write actions → ADMIN only
                         .requestMatchers(
                                 HttpMethod.POST,
                                 "/api/blogs"
+                        ).hasRole("ADMIN")
+                        .requestMatchers(
+                                HttpMethod.PATCH,
+                                "/api/blogs/**"
+                        ).hasRole("ADMIN")
+                        .requestMatchers(
+                                HttpMethod.DELETE,
+                                "/api/blogs/**"
                         ).hasRole("ADMIN")
 
                         // Everything else requires login
