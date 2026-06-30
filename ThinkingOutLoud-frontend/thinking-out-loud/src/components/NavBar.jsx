@@ -12,6 +12,8 @@ function Navbar() {
 
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const [scrolled, setScrolled] = useState(false);
+
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
@@ -22,8 +24,30 @@ function Navbar() {
     }
   }, [darkMode]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const outerClasses = `
+    sticky top-0 z-50 w-full flex justify-center pointer-events-none transition-all duration-500 ease-in-out
+    ${scrolled ? "py-2" : "py-0"}
+  `.trim().replace(/\s+/g, " ");
+
+  const innerClasses = `
+    pointer-events-auto flex items-center justify-between transition-all duration-500 ease-in-out
+    ${scrolled 
+      ? "max-w-5xl w-[92%] rounded-3xl border border-neutral-200/80 dark:border-neutral-800/80 shadow-lg backdrop-blur-xl bg-white/70 dark:bg-[#1c1c1c]/70 px-8 py-3.5 mt-2" 
+      : "max-w-full w-full border-b border-neutral-200/80 dark:border-neutral-800/80 backdrop-blur-md bg-white/80 dark:bg-[#121212]/80 px-6 py-4"
+    }
+  `.trim().replace(/\s+/g, " ");
+
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-[#121212]/80 border-b border-neutral-200/80 dark:border-neutral-800/80 px-6 py-4 flex items-center justify-between transition-colors">
+    <nav className={outerClasses}>
+      <div className={innerClasses}>
       <Link to="/" className="text-xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50 hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors">
         Thinking<span className="font-light italic text-neutral-500 dark:text-neutral-400">OutLoud</span>
       </Link>
@@ -96,7 +120,7 @@ function Navbar() {
         </div>
 
         {menuOpen && (
-          <div className="absolute top-[72px] right-6 w-52 bg-white/95 dark:bg-[#121212]/95 backdrop-blur-md border border-neutral-200/80 dark:border-neutral-800 rounded-2xl shadow-lg p-4 flex flex-col gap-3.5 z-50 animate-fade-in md:hidden transition-colors duration-300">
+          <div className="absolute top-[calc(100%+12px)] right-0 w-52 bg-white/95 dark:bg-[#121212]/95 backdrop-blur-md border border-neutral-200/80 dark:border-neutral-800 rounded-2xl shadow-lg p-4 flex flex-col gap-3.5 z-50 animate-fade-in md:hidden transition-colors duration-300">
             {user ? (
               <>
                 <div className="text-[10px] font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-widest pb-1 border-b border-neutral-100 dark:border-neutral-850">
